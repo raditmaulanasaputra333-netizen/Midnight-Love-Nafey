@@ -455,3 +455,283 @@ footer .heart {
     font-size: 15px;
   }
 }
+
+/* MIDNIGHT LOVE - EXTRA EXPERIENCE */
+.ml-universe,
+.ml-section,
+.ml-letter-section,
+.ml-distance,
+.ml-final {
+  box-sizing: border-box;
+  width: min(100% - 36px, 760px);
+  margin: 65px auto;
+  text-align: center;
+  color: #eee7ff;
+}
+
+.ml-universe {
+  position: relative;
+  overflow: hidden;
+  padding: 55px 22px;
+  border: 1px solid rgba(198, 165, 245, .25);
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #40305e 0%, transparent 65%),
+    linear-gradient(160deg, #17172f, #0b0b1b);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, .2);
+}
+
+.ml-orbit,
+.ml-eyebrow {
+  color: #c6a5f5;
+  font-size: 11px;
+  letter-spacing: 3px;
+  line-height: 1.8;
+}
+
+.ml-moon {
+  margin: 22px 0;
+  color: #e8d8ff;
+  font-size: 76px;
+  text-shadow: 0 0 35px rgba(198, 165, 245, .65);
+  animation: ml-float 4s ease-in-out infinite;
+}
+
+.ml-universe h2,
+.ml-section h2,
+.ml-letter-section h2,
+.ml-distance h2,
+.ml-final h2 {
+  margin: 12px 0;
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 7vw, 44px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.ml-description {
+  max-width: 570px;
+  margin: 18px auto 25px;
+  color: #b7b4cc;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.ml-button {
+  display: inline-block;
+  padding: 13px 21px;
+  border: 1px solid rgba(210, 185, 255, .4);
+  border-radius: 30px;
+  background: linear-gradient(135deg, #43325f, #25213e);
+  color: #f6edff;
+  font: inherit;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.ml-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(173, 133, 255, .2);
+}
+
+.ml-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+  text-align: left;
+}
+
+.ml-memory {
+  overflow: hidden;
+  align-self: start;
+  border: 1px solid rgba(198, 165, 245, .18);
+  border-radius: 18px;
+  background: #15152b;
+}
+
+.ml-memory:last-child {
+  grid-column: 1 / -1;
+}
+
+.ml-memory summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.ml-memory summary::-webkit-details-marker {
+  display: none;
+}
+
+.ml-memory img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.ml-memory summary span {
+  display: block;
+  padding: 12px 10px;
+  color: #d4b7ff;
+  font-family: Georgia, serif;
+  font-size: 15px;
+}
+
+.ml-memory > p {
+  margin: 0;
+  padding: 0 12px 16px;
+  color: #b7b4cc;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.ml-hint {
+  margin-top: 16px;
+  color: #928ca9;
+  font-size: 12px;
+}
+
+.ml-letter-section,
+.ml-final {
+  padding: 32px 22px;
+  border: 1px solid rgba(198, 165, 245, .22);
+  border-radius: 24px;
+  background: rgba(22, 22, 44, .88);
+}
+
+.ml-letter-icon,
+.ml-final-heart {
+  color: #d5b4ff;
+  font-size: 48px;
+  text-shadow: 0 0 24px rgba(198, 165, 245, .45);
+}
+
+.ml-letter {
+  margin-top: 24px;
+  padding: 23px 19px;
+  border: 1px solid rgba(198, 165, 245, .2);
+  border-radius: 16px;
+  background: #101024;
+  color: #d4d0e4;
+  text-align: left;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 1.95;
+  animation: ml-appear .5s ease both;
+}
+
+.ml-letter[hidden],
+.ml-surprise-message[hidden] {
+  display: none;
+}
+
+.ml-signature {
+  color: #d2b0ff;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.ml-distance {
+  padding: 32px 12px;
+}
+
+.ml-stars-line {
+  margin-bottom: 26px;
+  color: #c6a5f5;
+  letter-spacing: 3px;
+}
+
+.ml-quote {
+  margin-top: 28px;
+  padding: 22px;
+  border-left: 2px solid #b994ef;
+  border-radius: 0 16px 16px 0;
+  background: rgba(198, 165, 245, .07);
+  color: #ded0f7;
+  font-family: Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.ml-big-heart {
+  color: #d4aaff;
+  font-size: 60px;
+  animation: ml-heartbeat 1.5s ease-in-out infinite;
+}
+
+.ml-surprise-message {
+  margin-top: 28px;
+  animation: ml-appear .65s ease both;
+}
+
+.ml-surprise-message h3 {
+  color: #dfc6ff;
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.ml-surprise-message p {
+  color: #c0bbd4;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.ml-footer {
+  padding: 32px 15px 45px;
+  color: #a49abf;
+  text-align: center;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.ml-footer small {
+  color: #77728e;
+}
+
+@keyframes ml-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes ml-heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+@keyframes ml-appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 420px) {
+  .ml-gallery {
+    gap: 9px;
+  }
+
+  .ml-memory summary span {
+    font-size: 13px;
+  }
+
+  .ml-universe,
+  .ml-letter-section,
+  .ml-final {
+    padding: 30px 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ml-moon,
+  .ml-big-heart {
+    animation: none;
+  }
+
+  .ml-button {
+    transition: none;
+  }
+    }
+                   
