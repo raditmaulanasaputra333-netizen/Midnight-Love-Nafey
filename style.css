@@ -901,4 +901,23 @@ footer .heart {
   }
   }
 
+/* Memperpendek jarak surat dan cerita LDR */
+.ml-interactive-letter {
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 24px;
+}
+
+.ml-distance {
+  margin-top: 0 !important;
+  padding-top: 12px !important;
+}
+
+/* Merapikan jarak dekorasi bintang */
+.ml-distance .ml-stars-line {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+
                    
