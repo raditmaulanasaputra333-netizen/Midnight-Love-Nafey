@@ -91,3 +91,52 @@ if (document.readyState === "loading") {
 } else {
   startPage();
 }
+
+/* MIDNIGHT LOVE - EXTRA INTERACTIONS */
+function initMidnightExtras() {
+  const letterButton = document.getElementById("ml-open-letter");
+  const letter = document.getElementById("ml-letter");
+
+  if (letterButton && letter) {
+    letterButton.addEventListener("click", () => {
+      const opening = letter.hidden;
+      letter.hidden = !opening;
+
+      letterButton.textContent = opening
+        ? "Tutup surat ♡"
+        : "Buka suratmu ♡";
+    });
+  }
+
+  const surpriseButton = document.getElementById("ml-surprise-button");
+  const surprise = document.getElementById("ml-surprise-message");
+
+  if (surpriseButton && surprise) {
+    surpriseButton.addEventListener("click", () => {
+      const opening = surprise.hidden;
+      surprise.hidden = !opening;
+
+      surpriseButton.textContent = opening
+        ? "Tutup kejutan ♡"
+        : "Buka kejutan terakhir ✨";
+
+      if (opening && typeof makeHearts === "function") {
+        makeHearts(12);
+      }
+
+      if (opening) {
+        surprise.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }
+    });
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initMidnightExtras);
+} else {
+  initMidnightExtras();
+}
+
