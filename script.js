@@ -214,3 +214,16 @@ if (document.readyState === "loading") {
   }
 })();
   
+const openButton = document.getElementById("ml-open-envelope");
+const hiddenLetter = document.getElementById("ml-hidden-letter");
+
+if (openButton && hiddenLetter) {
+  openButton.addEventListener("click", () => {
+    hiddenLetter.hidden = !hiddenLetter.hidden;
+
+    openButton.textContent = hiddenLetter.hidden
+      ? "Buka suratmu 💌"
+      : "Tutup surat 💌";
+  });
+}
+
