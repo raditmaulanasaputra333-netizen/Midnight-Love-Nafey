@@ -91,139 +91,73 @@ if (document.readyState === "loading") {
 } else {
   startPage();
 }
-
+        
 /* MIDNIGHT LOVE - EXTRA INTERACTIONS */
-function initMidnightExtras() {
-  const letterButton = document.getElementById("ml-open-letter");
-  const letter = document.getElementById("ml-letter");
 
-  if (letterButton && letter) {
-    letterButton.addEventListener("click", () => {
-      const opening = letter.hidden;
-      letter.hidden = !opening;
-
-      letterButton.textContent = opening
-        ? "Tutup surat ♡"
-        : "Buka suratmu ♡";
-    });
-  }
-
-  const surpriseButton = document.getElementById("ml-surprise-button");
-  const surprise = document.getElementById("ml-surprise-message");
-
-  if (surpriseButton && surprise) {
-    surpriseButton.addEventListener("click", () => {
-      const opening = surprise.hidden;
-      surprise.hidden = !opening;
-
-      surpriseButton.textContent = opening
-        ? "Tutup kejutan ♡"
-        : "Buka kejutan terakhir ✨";
-
-      if (opening && typeof makeHearts === "function") {
-        makeHearts(12);
-      }
-
-      if (opening) {
-        surprise.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }
-    });
-  }
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initMidnightExtras);
-} else {
-  initMidnightExtras();
-}
-
-/* ======================================
-   MIDNIGHT LOVE: EXTRA INTERACTIONS
-   ====================================== */
-
-(() => {
-  // Animasi buka dan tutup surat
+// Surat interaktif
+function initInteractiveLetter() {
   const openButton = document.getElementById("ml-open-envelope");
   const hiddenLetter = document.getElementById("ml-hidden-letter");
 
-  if (openButton && hiddenLetter) {
-    openButton.addEventListener("click", () => {
-      const isHidden = hiddenLetter.hidden;
+  if (!openButton || !hiddenLetter) return;
 
-      hiddenLetter.hidden = !isHidden;
-      openButton.setAttribute("aria-expanded", String(isHidden));
-
-      openButton.textContent = isHidden
-        ? "Tutup surat 💌"
-        : "Buka suratmu 💌";
-
-      if (isHidden) {
-        hiddenLetter.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest"
-        });
-      }
-    });
-  }
-
-  // Efek hati saat kejutan terakhir dibuka
-  const surpriseButton = document.getElementById("ml-surprise-button");
-  const surpriseMessage = document.getElementById("ml-surprise-message");
-
-  if (surpriseButton && surpriseMessage) {
-    surpriseButton.addEventListener("click", () => {
-      // Beri kesempatan fungsi lama menampilkan pesan
-      window.setTimeout(() => {
-        if (surpriseMessage.hidden) return;
-
-        // Batasi jumlah hati agar tetap ringan di HP
-        for (let i = 0; i < 14; i++) {
-          const heart = document.createElement("span");
-          heart.className = "ml-floating-heart";
-          heart.textContent = Math.random() > 0.5 ? "♥" : "♡";
-
-          heart.style.setProperty(
-            "--ml-heart-x",
-            `${10 + Math.random() * 80}vw`
-          );
-
-          heart.style.setProperty(
-            "--ml-heart-y",
-            `${45 + Math.random() * 35}vh`
-          );
-
-          heart.style.setProperty(
-            "--ml-heart-size",
-            `${14 + Math.random() * 18}px`
-          );
-
-          document.body.appendChild(heart);
-
-          heart.addEventListener("animationend", () => {
-            heart.remove();
-          }, { once: true });
-
-          // Pengaman jika animasi tidak selesai
-          window.setTimeout(() => heart.remove(), 2500);
-        }
-      }, 100);
-    });
-  }
-})();
-  
-const openButton = document.getElementById("ml-open-envelope");
-const hiddenLetter = document.getElementById("ml-hidden-letter");
-
-if (openButton && hiddenLetter) {
   openButton.addEventListener("click", () => {
-    hiddenLetter.hidden = !hiddenLetter.hidden;
+    const opening = hiddenLetter.hidden;
+    hiddenLetter.hidden = !opening;
 
-    openButton.textContent = hiddenLetter.hidden
-      ? "Buka suratmu 💌"
-      : "Tutup surat 💌";
+    openButton.textContent = opening
+      ? "Tutup surat 💌"
+      : "Buka suratmu 💌";
+
+    openButton.setAttribute("aria-expanded", String(opening));
+
+    if (opening) {
+      hiddenLetter.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
   });
 }
 
+// Kejutan penutup dan efek hati
+function initFinalSurprise() {
+  const button = document.getElementById("ml-surprise-button");
+  const message = document.getElementById("ml-surprise-message");
+
+  if (!button || !message) return;
+
+  button.addEventListener("click", () => {
+    const opening = message.hidden;
+    message.hidden = !opening;
+
+    button.textContent = opening
+      ? "Tutup kejutan ♡"
+      : "Buka kejutan terakhir ✨";
+
+    if (opening) {
+      makeHearts(14);
+
+      message.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+  });
+}
+
+// Jalankan fitur tambahan setelah HTML siap
+function initMidnightLoveExtras() {
+  initInteractiveLetter();
+  initFinalSurprise();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener(
+    "DOMContentLoaded",
+    initMidnightLoveExtras
+  );
+} else {
+  initMidnightLoveExtras();
+  }
+        
