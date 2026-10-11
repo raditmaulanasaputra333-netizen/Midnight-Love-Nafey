@@ -140,3 +140,77 @@ if (document.readyState === "loading") {
   initMidnightExtras();
 }
 
+/* ======================================
+   MIDNIGHT LOVE: EXTRA INTERACTIONS
+   ====================================== */
+
+(() => {
+  // Animasi buka dan tutup surat
+  const openButton = document.getElementById("ml-open-envelope");
+  const hiddenLetter = document.getElementById("ml-hidden-letter");
+
+  if (openButton && hiddenLetter) {
+    openButton.addEventListener("click", () => {
+      const isHidden = hiddenLetter.hidden;
+
+      hiddenLetter.hidden = !isHidden;
+      openButton.setAttribute("aria-expanded", String(isHidden));
+
+      openButton.textContent = isHidden
+        ? "Tutup surat 💌"
+        : "Buka suratmu 💌";
+
+      if (isHidden) {
+        hiddenLetter.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+      }
+    });
+  }
+
+  // Efek hati saat kejutan terakhir dibuka
+  const surpriseButton = document.getElementById("ml-surprise-button");
+  const surpriseMessage = document.getElementById("ml-surprise-message");
+
+  if (surpriseButton && surpriseMessage) {
+    surpriseButton.addEventListener("click", () => {
+      // Beri kesempatan fungsi lama menampilkan pesan
+      window.setTimeout(() => {
+        if (surpriseMessage.hidden) return;
+
+        // Batasi jumlah hati agar tetap ringan di HP
+        for (let i = 0; i < 14; i++) {
+          const heart = document.createElement("span");
+          heart.className = "ml-floating-heart";
+          heart.textContent = Math.random() > 0.5 ? "♥" : "♡";
+
+          heart.style.setProperty(
+            "--ml-heart-x",
+            `${10 + Math.random() * 80}vw`
+          );
+
+          heart.style.setProperty(
+            "--ml-heart-y",
+            `${45 + Math.random() * 35}vh`
+          );
+
+          heart.style.setProperty(
+            "--ml-heart-size",
+            `${14 + Math.random() * 18}px`
+          );
+
+          document.body.appendChild(heart);
+
+          heart.addEventListener("animationend", () => {
+            heart.remove();
+          }, { once: true });
+
+          // Pengaman jika animasi tidak selesai
+          window.setTimeout(() => heart.remove(), 2500);
+        }
+      }, 100);
+    });
+  }
+})();
+  
