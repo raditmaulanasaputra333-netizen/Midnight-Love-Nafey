@@ -918,6 +918,50 @@ footer .heart {
   margin-top: 0 !important;
   margin-bottom: 12px !important;
 }
+.birthday-unlocked {
+  text-align: center;
+  padding: 28px 18px;
+  margin: 24px auto;
+  border: 1px solid rgba(198, 165, 245, 0.35);
+  border-radius: 22px;
+  background: rgba(141, 123, 196, 0.12);
+  animation: birthdayReveal 1.2s ease both;
+}
 
+.birthday-unlocked h2 {
+  color: #d9baff;
+  margin: 18px 0;
+}
+
+.birthday-unlocked p {
+  line-height: 1.8;
+}
+
+.birthday-sparkle {
+  color: #d9baff;
+  font-size: 24px;
+  animation: birthdayGlow 2s ease-in-out infinite alternate;
+}
+
+.birthday-signature {
+  color: #d9baff;
+  font-style: italic;
+}
+
+@keyframes birthdayReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes birthdayGlow {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
 
                    
