@@ -18,6 +18,7 @@ function createStars() {
   }
 }
 
+
 function updateBirthdayCountdown() {
   const target = new Date("2026-10-20T00:00:00+07:00").getTime();
   const distance = target - Date.now();
@@ -25,9 +26,10 @@ function updateBirthdayCountdown() {
   const days = document.getElementById("days");
   const hours = document.getElementById("hours");
   const minutes = document.getElementById("minutes");
+  const seconds = document.getElementById("seconds");
   const birthdayMessage = document.getElementById("birthday-unlocked");
 
-  if (!days || !hours || !minutes) {
+  if (!days || !hours || !minutes || !seconds) {
     console.warn("Elemen countdown tidak ditemukan.");
     return;
   }
@@ -36,25 +38,27 @@ function updateBirthdayCountdown() {
     days.textContent = "🎂";
     hours.textContent = "♡";
     minutes.textContent = "♡";
+    seconds.textContent = "♡";
 
-    // Tampilkan ucapan ulang tahun secara otomatis
     if (birthdayMessage && birthdayMessage.hidden) {
       birthdayMessage.hidden = false;
       makeHearts(18);
     }
-
     return;
   }
 
-  const totalMinutes = Math.floor(distance / 60000);
-  const remainingDays = Math.floor(totalMinutes / 1440);
-  const remainingHours = Math.floor((totalMinutes % 1440) / 60);
-  const remainingMinutes = totalMinutes % 60;
+  const totalSeconds = Math.floor(distance / 1000);
 
-  days.textContent = remainingDays;
-  hours.textContent = String(remainingHours).padStart(2, "0");
-  minutes.textContent = String(remainingMinutes).padStart(2, "0");
+  days.textContent = Math.floor(totalSeconds / 86400);
+  hours.textContent = String(
+    Math.floor((totalSeconds % 86400) / 3600)
+  ).padStart(2, "0");
+  minutes.textContent = String(
+    Math.floor((totalSeconds % 3600) / 60)
+  ).padStart(2, "0");
+  seconds.textContent = String(totalSeconds % 60).padStart(2, "0");
 }
+
 
 function revealSecret() {
   const message = document.getElementById("secretText");
