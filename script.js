@@ -59,7 +59,6 @@ function updateBirthdayCountdown() {
   seconds.textContent = String(totalSeconds % 60).padStart(2, "0");
 }
 
-
 function revealSecret() {
   const message = document.getElementById("secretText");
   const button = document.getElementById("secretBtn");
@@ -162,5 +161,4 @@ if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", startPage);
 } else {
   startPage();
-      }
-
+        }
