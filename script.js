@@ -1,3 +1,4 @@
+
 function createStars() {
   const starContainer = document.getElementById("stars");
   if (!starContainer) return;
@@ -24,6 +25,7 @@ function updateBirthdayCountdown() {
   const days = document.getElementById("days");
   const hours = document.getElementById("hours");
   const minutes = document.getElementById("minutes");
+  const birthdayMessage = document.getElementById("birthday-unlocked");
 
   if (!days || !hours || !minutes) {
     console.warn("Elemen countdown tidak ditemukan.");
@@ -32,8 +34,15 @@ function updateBirthdayCountdown() {
 
   if (distance <= 0) {
     days.textContent = "🎂";
-    hours.textContent = "Happy";
-    minutes.textContent = "Birthday!";
+    hours.textContent = "♡";
+    minutes.textContent = "♡";
+
+    // Tampilkan ucapan ulang tahun secara otomatis
+    if (birthdayMessage && birthdayMessage.hidden) {
+      birthdayMessage.hidden = false;
+      makeHearts(18);
+    }
+
     return;
   }
 
@@ -60,7 +69,9 @@ function revealSecret() {
       : "BUKA PESAN RAHASIA";
   }
 
-  if (message.classList.contains("show")) makeHearts(8);
+  if (message.classList.contains("show")) {
+    makeHearts(8);
+  }
 }
 
 function makeHearts(amount = 6) {
@@ -72,27 +83,15 @@ function makeHearts(amount = 6) {
     heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
     heart.style.left = (10 + Math.random() * 80) + "vw";
     heart.style.bottom = (10 + Math.random() * 20) + "vh";
-    heart.style.color = ["#c6a5f5", "#eee4ff", "#a9b8ff"][Math.floor(Math.random() * 3)];
+    heart.style.color = ["#c6a5f5", "#eee4ff", "#a9b8ff"][
+      Math.floor(Math.random() * 3)
+    ];
     heart.style.setProperty("--drift", (Math.random() * 100 - 50) + "px");
 
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 2600);
   }
 }
-
-function startPage() {
-  createStars();
-  updateBirthdayCountdown();
-  setInterval(updateBirthdayCountdown, 1000);
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", startPage);
-} else {
-  startPage();
-}
-        
-/* MIDNIGHT LOVE - EXTRA INTERACTIONS */
 
 // Surat interaktif
 function initInteractiveLetter() {
@@ -120,7 +119,7 @@ function initInteractiveLetter() {
   });
 }
 
-// Kejutan penutup dan efek hati
+// Kejutan penutup
 function initFinalSurprise() {
   const button = document.getElementById("ml-surprise-button");
   const message = document.getElementById("ml-surprise-message");
@@ -146,18 +145,18 @@ function initFinalSurprise() {
   });
 }
 
-// Jalankan fitur tambahan setelah HTML siap
-function initMidnightLoveExtras() {
+function startPage() {
+  createStars();
+  updateBirthdayCountdown();
+  setInterval(updateBirthdayCountdown, 1000);
+
   initInteractiveLetter();
   initFinalSurprise();
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener(
-    "DOMContentLoaded",
-    initMidnightLoveExtras
-  );
+  document.addEventListener("DOMContentLoaded", startPage);
 } else {
-  initMidnightLoveExtras();
-  }
-        
+  startPage();
+      }
+
